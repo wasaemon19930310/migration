@@ -1,0 +1,16 @@
+Sub CreateMigration()
+    Dim migration As String
+    Dim isNull As Integer
+    Dim i as Integer
+
+    For i = 5 to 6
+        migration = "$table->" & Range("E" & i).Value & "('" & Range("C" & i).Value & "')"
+        isNull = Len(Range("H" & i).Value)
+        If isNull <> 0 Then
+            migration = migration & "->nullable()"
+        EndIf
+
+        migration = migration & ";"
+        Range("I" & i).Value = migration
+    Next
+End Sub
